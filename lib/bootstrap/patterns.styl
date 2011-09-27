@@ -212,6 +212,11 @@
           color: $gray
           border-top: 1px solid rgba(0,0,0,.2)
 
+.topbar-inner
+  background:#222
+  gradient-vertical(#333, #222)
+  box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)
+
 // PAGE HEADERS
 // ------------
 
@@ -544,37 +549,37 @@ input[type="submit"].btn
 // POPOVER ARROWS
 // --------------
 
-arrow-above($arrowWidth = 5px)
-    bottom: 0
-    left: 50%
-    margin-left: - $arrowWidth
-    border-left: $arrowWidth solid transparent
-    border-right: $arrowWidth solid transparent
-    border-top: $arrowWidth solid #000
+arrow-above($arrow-width = 5px)
+  bottom: 0
+  left: 50%
+  margin-left: - $arrow-width
+  border-left: $arrow-width solid transparent
+  border-right: $arrow-width solid transparent
+  border-top: $arrow-width solid #000
 
-arrow-left($arrowWidth = 5px)
-    top: 50%
-    right: 0
-    margin-top: - $arrowWidth
-    border-top: $arrowWidth solid transparent
-    border-bottom: $arrowWidth solid transparent
-    border-left: $arrowWidth solid #000
+arrow-left($arrow-width = 5px)
+  top: 50%
+  right: 0
+  margin-top: - $arrow-width
+  border-top: $arrow-width solid transparent
+  border-bottom: $arrow-width solid transparent
+  border-left: $arrow-width solid #000
 
-arrow-below($arrowWidth = 5px)
-    top: 0
-    left: 50%
-    margin-left: - $arrowWidth
-    border-left: $arrowWidth solid transparent
-    border-right: $arrowWidth solid transparent
-    border-bottom: $arrowWidth solid #000
+arrow-below($arrow-width = 5px)
+  top: 0
+  left: 50%
+  margin-left: - $arrow-width
+  border-left: $arrow-width solid transparent
+  border-right: $arrow-width solid transparent
+  border-bottom: $arrow-width solid #000
 
-arrow-right($arrowWidth = 5px)
-    top: 50%
-    left: 0
-    margin-top: - $arrowWidth
-    border-top: $arrowWidth solid transparent
-    border-bottom: $arrowWidth solid transparent
-    border-right: $arrowWidth solid #000
+arrow-right($arrow-width = 5px)
+  top: 50%
+  left: 0
+  margin-top: - $arrow-width
+  border-top: $arrow-width solid transparent
+  border-bottom: $arrow-width solid transparent
+  border-right: $arrow-width solid #000
 
 // TWIPSY
 // ------
@@ -610,6 +615,7 @@ arrow-right($arrowWidth = 5px)
     position: absolute
     width: 0
     height: 0
+
 
 // POPOVERS
 // --------

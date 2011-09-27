@@ -52,3 +52,194 @@ $tetra2 ?=            spin($base-color, -90)
 $analog1 ?=           spin($base-color, 22)  
 $analog2 ?=           spin($base-color, -22) 
 
+// MIXINS
+// ---------
+// Clearfix for clearing floats like a boss h5bp.com/q
+clearfix() 
+  zoom: 1
+  &:before
+  &:after
+    display: table
+    content: ""
+    zoom: 1
+    *display: inline
+  &:after 
+    clear: both
+
+// Center-align a block level element
+center-block()
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+
+// Sizing shortcuts
+size($height = 5px, $width = 5px)
+  height: $height
+  width: $width
+
+square($size = 5px) 
+  size($size, $size)
+
+// Input placeholder text
+placeholder($color = $light-gray) 
+  :-moz-placeholder 
+    color: $color
+  ::-webkit-input-placeholder 
+    color: $color
+
+// Font Stacks
+font-shorthand($weight = normal, $size = 14px, $lineHeight = 20px) 
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+
+font-sans-serif($weight = normal, $size = 14px, $lineHeight = 20px) 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-shorthand arguments
+
+font-serif($weight = normal, $size = 14px, $lineHeight = 20px) 
+  font-family: "Georgia", Times New Roman, Times, serif
+  font-shorthand arguments
+  
+font-monospace($weight = normal, $size = 14px, $lineHeight = 20px) 
+  font-family: "Monaco", Courier New, monospace
+  font-shorthand arguments
+
+// Grid System
+fixed-container() 
+  width: $site-width
+  margin-left: auto
+  margin-right: auto
+  clearfix()
+
+columns($span = 1)
+  width: ($grid-column-width * $span) + ($grid-gutter-width * ($span - 1))
+
+offset($offset = 1)
+  margin-left: ($grid-column-width * $offset) + ($grid-gutter-width * ($offset - 1)) + $extra-space
+
+
+// Necessary grid styles for every column to make them appear next to each other horizontally
+gridColumn() 
+  display: inline
+  float: left
+  margin-left: $grid-gutter-width
+
+// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
+makeColumn($span = 1) 
+  gridColumn()
+  columns($span)
+
+
+// Border Radius
+border-radius($radius = 5px) 
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+
+// Drop shadows
+box-shadow($shadow = 0 1px 3px rgba(0,0,0,.25)) 
+  -webkit-box-shadow: $shadow
+  -moz-box-shadow: $shadow
+  box-shadow: $shadow
+
+// Transitions
+transition() 
+  -webkit-transition: arguments
+  -moz-transition: arguments
+  -ms-transition: arguments
+  -o-transition: arguments
+  transition: arguments
+
+
+// Background clipping
+background-clip() 
+  -webkit-background-clip: arguments
+  -moz-background-clip: arguments
+  background-clip: arguments
+
+
+// CSS3 Content Columns
+content-columns($column-count, $column-gap = 20px) 
+  -webkit-column-count: $column-count
+  -moz-column-count: $column-count
+  column-count: $column-count
+  -webkit-column-gap: $column-gap
+  -moz-column-gap: $column-gap
+  column-gap: $column-gap
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+translucent-background($color = $white, $alpha = 1) 
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+ 
+translucent-border($color = $white, $alpha = 1) 
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha)
+  background-clip: padding-box
+
+// Gradient Bar Colors for buttons and allerts
+gradientBar($primary-color, $secondary-color) 
+  gradient-vertical($primary-color, $secondary-color)
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25)
+  border-color: $secondary-color $secondary-color darken($secondary-color, 15%)
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%)
+
+
+// Gradients
+gradient-horizontal($start-color = #555, $end-color = #333) 
+  background-color: $end-color
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, right top, from($start-color), to($end-color)) // Konqueror
+  background-image: -moz-linear-gradient(left, $start-color, $end-color) // FF 3.6+
+  background-image: -ms-linear-gradient(left, $start-color, $end-color) // IE10
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $start-color), color-stop(100%, $end-color)) // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, $start-color, $end-color) // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, $start-color, $end-color) // Opera 11.10
+  background-image: linear-gradient(left, $start-color, $end-color) // Le standard
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='{$start-color}', endColorstr='{$end-color}', GradientType=1)" // IE9 and down
+
+
+gradient-vertical($start-color = #555, $end-color = #333) 
+  background-color: $end-color
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from($start-color), to($end-color)) // Konqueror
+  background-image: -moz-linear-gradient(top, $start-color, $end-color) // FF 3.6+
+  background-image: -ms-linear-gradient(top, $start-color, $end-color) // IE10
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $start-color), color-stop(100%, $end-color)) // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $start-color, $end-color) // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, $start-color, $end-color) // Opera 11.10
+  background-image: linear-gradient(top, $start-color, $end-color) // The standard
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='{$start-color}', endColorstr='{$end-color}', GradientType=0)" // IE9 and down
+
+gradient-directional($start-color = #555, $end-color = #333, $deg = 45deg) 
+  background-color: $end-color
+  background-repeat: repeat-x
+  background-image: -moz-linear-gradient($deg, $start-color, $end-color) // FF 3.6+
+  background-image: -ms-linear-gradient($deg, $start-color, $end-color) // IE10
+  background-image: -webkit-linear-gradient($deg, $start-color, $end-color) // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $start-color, $end-color) // Opera 11.10
+  background-image: linear-gradient($deg, $start-color, $end-color) // The standard
+
+gradient-vertical-three-colors($start-color = #00b3ee, $mid-color = #7a43b6, $color-stop = 50%, $end-color = #c3325f) 
+  background-color: $end-color
+  background-repeat: no-repeat
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($start-color), color-stop($color-stop, $mid-color), to($end-color))
+  background-image: -webkit-linear-gradient($start-color, $mid-color $color-stop, $end-color)
+  background-image: -moz-linear-gradient(top, $start-color, $mid-color $color-stop, $end-color)
+  background-image: -ms-linear-gradient($start-color, $mid-color $color-stop, $end-color)
+  background-image: -o-linear-gradient($start-color, $mid-color $color-stop, $end-color)
+  background-image: linear-gradient(top, $start-color, $mid-color $color-stop, $end-color)
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='{$start-color}', endColorstr='{$end-color}', GradientType=0)" // IE9 and down, gets no color-stop at all for proper fallback
+
+// Reset filters for IE
+reset-filter() 
+  filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)"
+
+
+// Opacity
+opacity($opacity = 100) 
+  filter: "alpha(opacity=$opacity)"
+  -khtml-opacity: $opacity / 100
+  -moz-opacity: $opacity / 100
+  opacity: $opacity / 100
