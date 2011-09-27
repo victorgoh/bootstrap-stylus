@@ -19,6 +19,8 @@
   .span14
   .span15
   .span16
+  .span-one-third
+  .span-two-thirds
     display: inline
     float: left
     margin-left: 20px
@@ -82,6 +84,16 @@
     offset(11)
   .offset12
     offset(12)
+    
+  // Unique column sizes for 16-column grid
+  .span-one-third     
+    width: 300px
+  .span-two-thirds
+    width: 620px
+  .offset-one-third
+    margin-left: 340px
+  .offset-two-thirds
+    margin-left: 660px
 
 // STRUCTURAL LAYOUT
 // -----------------
@@ -92,12 +104,13 @@ html, body
 body
   margin: 0
   font-sans-serif(normal,$basefont,$baseline)
-  color: $gray
+  color: $dark-gray
   text-rendering: optimizeLegibility
 
 .container
   width: 940px
   margin: 0 auto
+  clearfix()
 
 .container-fluid
   padding: 0 20px
