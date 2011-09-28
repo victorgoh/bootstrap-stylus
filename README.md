@@ -4,6 +4,7 @@
   Twitter's [Bootstrap](https://github.com/twitter/bootstrap) for [Stylus](https://github.com/learnboost/stylus).
   
   (just started it, come back later)
+  Ported changes from less files in Twitter's [Bootstrap](https://github.com/twitter/bootstrap) v1.3.0
 
 ## Installation
 
